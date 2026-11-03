@@ -1,0 +1,17 @@
+# Servicio systemd para la API en EC2 (Amazon Linux 2023).
+# Copiar a /etc/systemd/system/ y activar con:
+#   sudo systemctl daemon-reload && sudo systemctl enable --now veterinaria-api
+[Unit]
+Description=API Veterinaria (Caso 2)
+After=network.target mariadb.service
+Requires=mariadb.service
+
+[Service]
+User=ec2-user
+WorkingDirectory=/home/ec2-user
+ExecStart=/home/ec2-user/veterinaria_api
+EnvironmentFile=/home/ec2-user/veterinaria.env
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

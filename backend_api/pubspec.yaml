@@ -1,0 +1,16 @@
+name: veterinaria_api
+description: API REST de la clinica veterinaria (Caso 2) con MySQL.
+publish_to: 'none'
+version: 1.0.0
+
+environment:
+  sdk: ^3.13.7
+dependencies:
+  bcrypt: ^1.2.0
+  dart_jsonwebtoken: ^3.4.1
+  mysql_client: ^0.0.27
+  shelf: ^1.4.3
+  shelf_router: ^1.1.5
+dev_dependencies:
+  http: ^1.6.0
+  lints: ^6.1.0
