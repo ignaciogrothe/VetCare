@@ -30,8 +30,9 @@ Future<void> main() async {
       .addHandler(VeterinariaApi(pool, auth).handler);
 
   final puerto = int.parse(_env('PORT', '8080'));
-  // 0.0.0.0 para que el emulador o un telefono en la misma red lleguen.
-  final servidor = await io.serve(handler, InternetAddress.anyIPv4, puerto);
+  // HOST=127.0.0.1 en AWS (detras de nginx); sin HOST sigue siendo 0.0.0.0
+  // para que el emulador o un telefono en la misma red lleguen.
+  final servidor = await io.serve(handler, _env('HOST', '0.0.0.0'), puerto);
   stdout.writeln(
     'API veterinaria escuchando en http://${servidor.address.host}:$puerto',
   );
